@@ -111,6 +111,7 @@ var TranslateDialog = Dialog.extend({
     set_maxlength: function(){
         // set maxlength if initial field has size attr
         _.each(this.translatable_fields, function(field_name){
+            if ($('[name='+field_name+']')[0] === undefined) return;
             var size = $('[name='+field_name+']')[0].maxLength;
             if (size > 0){
                 this.$('input.oe_translation_field[name$="'+field_name+'"], textarea.oe_translation_field[name$="'+field_name+'"]').attr('maxlength', size);
